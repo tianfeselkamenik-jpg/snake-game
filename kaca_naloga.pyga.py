@@ -1,0 +1,166 @@
+
+import random
+import time
+import numpy as np
+import pygame
+smer = 1
+pygame.init()
+
+canvas = pygame.display.set_mode((1000, 1000))
+
+glava = pygame.Rect(30, 30, 60, 60)
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_LEFT]:
+            smer = 0
+
+        if keys[pygame.K_RIGHT]:
+            smer = 1
+
+        if keys[pygame.K_UP]:
+            smer = 2
+
+        if keys[pygame.K_DOWN]:
+            smer = 3
+    canvas.fill((255,255,255))
+    pygame.draw.rect(canvas, (255,0,0), glava)
+    if smer == 1:
+        glava.x += 10
+    if smer == 2:
+        glava.y += 10
+    if smer == 3:
+        glava.y -= 10
+    if smer == 0:
+        glava.x -= 10
+    pygame.display.update()
+    time.sleep(0.3)
+pygame.quit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""from pynput import keyboard
+import numpy as np
+import os
+import time
+import random
+import pygame
+najboljsi_rezultat = 0
+kordinati_kace = [(5, 5), (5, 6), (5, 7)]
+smer = "a"
+running = True
+hrana = (4, 5)
+dolzina = 3
+pygame.init()
+canvas = pygame.display.set_mode((600, 600))
+glava = pygame.Rect(30, 30, 60, 200)
+
+color = (240, 50, 70)
+
+
+
+def premikanje():
+    global kordinati_kace
+    global hrana
+    global dolzina
+
+    glava = kordinati_kace[0]
+    if smer == "t":
+        nova_glava = (glava[0] - 1, glava[1])
+    elif smer == "g":
+        nova_glava = (glava[0] + 1, glava[1])
+    elif smer == "f":
+        nova_glava = (glava[0], glava[1] - 1)
+    elif smer == "h":
+        nova_glava = (glava[0], glava[1] + 1)
+    else:
+        return
+
+    
+    kordinati_kace.insert(0, nova_glava)
+    if kordinati_kace[0] == hrana:
+        r = random.randint(2, 15)
+        p = random.randint(2, 15)
+        u = r, p
+        while u in kordinati_kace:
+            r = random.randint(2, 15)
+            p = random.randint(2, 15)
+            u = r, p
+            return u
+        hrana = u
+        dolzina += 1
+    else:
+        kordinati_kace.pop()
+
+    
+    polja = Polja()
+    print(polja)
+
+
+
+
+
+podvojenost = False
+
+
+
+
+while running:
+    
+    canvas.fill(color)
+    if kordinati_kace[0][0] < 0 or kordinati_kace[0][0] > 15 or kordinati_kace[0][1] < 0 or kordinati_kace[0][1] > 30 or podvojenost == True:
+        
+        time.sleep(5)
+        if dolzina > najboljsi_rezultat:
+            najboljsi_rezultat = dolzina
+        o = dolzina - 3
+        for i in range(o):
+            kordinati_kace.pop()
+        podvojenost = False
+        dolzina = 3
+    element = kordinati_kace[0]
+    if kordinati_kace.count(element) > 1:
+        podvojenost = True
+    premikanje()
+    
+    time.sleep(0.3)
+    pygame.draw.rect(canvas, 10, 200, 50, glava)
+    
+ """   
+    
+
+
